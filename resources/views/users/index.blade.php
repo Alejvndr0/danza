@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.crud')
 
 @section('content')
 <div class="container">
@@ -23,7 +23,9 @@
                     <td>{{$user->password}}</td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Ver</a>
+                        <br/>
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Editar</a>
+                        <br/>
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

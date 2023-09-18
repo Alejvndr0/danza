@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.crud')
 
 @section('content')
 <div class="container">
-    <h2>Detalles del Estudiante</h2>
+    <h2>Detalles del usuario</h2>
     <table class="table">
         <tbody>
             <tr>
