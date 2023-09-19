@@ -1,0 +1,156 @@
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del encabezado con video de fondo */
+header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 50, 75, 0.5);
+    z-index: -1;
+}
+
+header h1 {
+    color: #fff;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+}
+
+/* Estilos de las secciones */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    font-size: 24px;
+}
+
+.container p {
+    font-size: 16px;
+}
+
+.container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.container ul li {
+    margin-bottom: 10px;
+}
+
+/* Estilos de la galería de imágenes */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.image {
+    flex-basis: calc(33.33% - 10px);
+    margin-bottom: 20px;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    transition: transform 0.2s;
+}
+
+.image img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Estilos para el fondo y el contenedor */
+.relative {
+    position: relative;
+}
+
+
+/* Estilos para la sección fija en la esquina superior derecha */
+.fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: right;
+    z-index: 10;
+}
+
+/* Estilos para los enlaces */
+.font-semibold {
+    font-weight: 600;
+}
+
+.text-gray-600 {
+    color: #718096;
+}
+
+.hover\:text-gray-900:hover {
+    color: #4a90e2;
+}
+
+.dark\:text-gray-400 {
+    color: #cbd5e0;
+}
+
+.dark\:hover\:text-white:hover {
+    color: #fff;
+}
+
+/* Estilos para el enfoque */
+.focus\:outline {
+    outline: 2px solid transparent;
+}
+
+.focus\:outline-2:focus {
+    outline: 2px solid #4a90e2;
+}
+
+.focus\:rounded-sm {
+    border-radius: 0.125rem;
+}
+
+.focus\:outline-red-500:focus {
+    outline: 2px solid #f56565;
+}

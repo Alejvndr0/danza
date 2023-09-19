@@ -6,7 +6,7 @@
     <title>DANZANDO</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body  class="bg-success p-2" style="--bs-bg-opacity: .5;">
+<body  style="background-color: rgba(1, 50, 75, 0.5);">
     <nav class="navbar-expand-lg navbar-light bg-light "  class="bg-success p-2" style="--bs-bg-opacity: .5;">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
