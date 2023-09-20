@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\ProfesoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,21 @@ Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit
 Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
 
 Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
+
+
+Route::get('/profesores', [ProfesoresController::class, 'index'])->name('profesores.index');
+Route::get('/estudiantes/{estudiante}', [EstudianteController::class, 'show'])->name('estudiantes.show');
+
+Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
+Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
+
+Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit'])->name('estudiantes.edit');
+Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
+
+Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
+
+
+
+
+
+

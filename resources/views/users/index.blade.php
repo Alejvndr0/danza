@@ -1,10 +1,8 @@
-@extends('layouts.crud')
+@extends('layouts.inicio')
 
 @section('content')
 <div class="container">
     <h2>Listado de usuarios</h2>
-    <a href="{{ route('users.create') }}" class="btn btn-primary">Crear usuario</a>
-    <a href="{{route('estudiantes.index')}}" class="btn btn-primary">estudiantes</a>
     <table class="table">
         <thead>
             <tr>

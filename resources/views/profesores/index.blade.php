@@ -4,34 +4,34 @@
 <div class="container">
     <h2>Listado de estudiantes</h2>
     <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
-    <a href="{{ route('estudiantes.create') }}" class="btn btn-primary mb-3">Crear estudiante</a>
+    <a href="{{ route('profesores.create') }}" class="btn btn-primary mb-3">Crear estudiante</a>
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>apellido</th>
-                <th>fecha de nacimiento</th>
                 <th>correo</th>
+                <th>telefono</th>
                 <th>direccion</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($estudiantes as $estudiante)
+            @foreach ($profesores as $profesor)
                 <tr>
-                    <td>{{$estudiante->id }}</td>
-                    <td>{{$estudiante->nombre }}</td>
-                    <td>{{$estudiante->apellido }}</td>
-                    <td>{{$estudiante->fecha_nac}}</td>
-                    <td>{{$estudiante->correo}}</td>
-                    <td>{{$estudiante->direccion}}</td>
+                    <td>{{$profesor->id }}</td>
+                    <td>{{$profesor->nombre }}</td>
+                    <td>{{$profesor->apellido }}</td>
+                    <td>{{$profesor->correo}}</td>
+                    <td>{{$profesor->telefono}}</td>
+                    <td>{{$profesor->direccion}}</td>
                     <td>
-                        <a href="{{ route('estudiantes.show', $estudiante->id) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('profesores.show', $profesor->id) }}" class="btn btn-info">Ver</a>
                         <br/>
-                        <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ route('profesores.edit', $profesor->id) }}" class="btn btn-primary">Editar</a>
                         <br/>
-                        <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST">
+                        <form action="{{ route('profesores.destroy', $profesor->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Eliminar</button>

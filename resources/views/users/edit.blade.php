@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Editar usuario</h2>
+    <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
