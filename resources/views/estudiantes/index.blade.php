@@ -27,9 +27,9 @@
                     <td>{{$estudiante->correo}}</td>
                     <td>{{$estudiante->direccion}}</td>
                     <td>
-                        <a href="{{ route('estudiantes.show', $estudiante->id) }}" class="btn btn-info">Ver</a>
+                        
                         <br/>
-                        <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-primary mb-3">Editar</a>
                         <br/>
                         <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST">
                             @csrf

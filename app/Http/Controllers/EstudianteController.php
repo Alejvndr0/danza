@@ -50,7 +50,7 @@ class EstudianteController extends Controller
      */
     public function show(Estudiante $estudiante)
     {
-        return view('estudiantes.show' ,compact('estudiantes'));
+        return view('estudiantes.show' ,compact('estudiante'));
     }
 
     /**

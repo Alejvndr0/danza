@@ -2,103 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profesor;
 use Illuminate\Http\Request;
+use App\Models\Profesor;
 
 class ProfesoresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $profesores = Profesor:: all();
+        $profesores = Profesor::all();
         return view('profesores.index', compact('profesores'));
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('profesores.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' =>'required',
-            'apellido'=>'required',
-            'correo' =>'required',
-            'telefono' =>'required',
-            'direccion' =>'required',
-
-
-
-
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'correo' => 'required',
+            'telefono' => 'required',
+            'direccion' => 'required',
         ]);
+
         Profesor::create($request->all());
-        return redirect()->route('profesores.index')->with('profesor creado exitosamente');
+        return redirect()->route('profesores.index')->with('success', 'Profesor creado exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Profesor $profesor)
+    public function show($id)
     {
-        return view('profeosres.show' ,compact('profesores'));
+        $profesor = Profesor::find($id);
+        return view('profesores.show', compact('profesor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Request $request, Profesor $profesor)
+    public function edit($id)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'correo' =>'required',
-            'telefono' => 'required',
-            'direccion' => 'required',
-        
-        ]);
-
-        $profesor->update($request->all());
-
-        return redirect()->route('profesores.index')
-            ->with('success', 'profesor actualizado exitosamente.');
+        $profesor = Profesor::find($id);
+        return view('profesores.edit', compact('profesor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Profesor $profesor)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
-            'correo' =>'required',
+            'correo' => 'required',
             'telefono' => 'required',
             'direccion' => 'required',
-        
         ]);
 
+        $profesor = Profesor::find($id);
         $profesor->update($request->all());
-        return redirect()->route('profesores.index')
-            ->with('success', 'profesor actualizado exitosamente.');
+
+        return redirect()->route('profesores.index')->with('success', 'Profesor actualizado exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Profesor $profesor)
+    public function destroy($id)
     {
+        $profesor = Profesor::find($id);
         $profesor->delete();
-        return redirect()->route('profesores.index')
-            ->with('success', 'profesor eliminado exitosamente.');
+        
+        return redirect()->route('profesores.index')->with('success', 'Profesor eliminado exitosamente');
     }
 }

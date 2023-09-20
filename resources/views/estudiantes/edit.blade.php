@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Editar usuario</h2>
+    <a href="{{route('estudiantes.index')}}" class="btn btn-primary mb-3">Volver</a>
     <form action="{{ route('estudiantes.update', $estudiante->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -20,12 +21,13 @@
         </div>
         <div class="form-group">
             <label for="correo">correo:</label>
-            <input type="text" class="form-control" name="correo" value="{{ $estudiante->correo }}" required>
+            <input type="email" class="form-control" name="correo" value="{{ $estudiante->correo }}" required>
         </div>
         <div class="form-group">
             <label for="direccion">direccion:</label>
             <input type="text" class="form-control" name="direccion" value="{{ $estudiante->direccion }}" required>
         </div>
+        <br>
         <button type="submit" class="btn btn-success">Actualizar</button>
     </form>
 </div>

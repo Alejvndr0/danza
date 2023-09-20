@@ -47,17 +47,17 @@ Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])
 
 Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
 
-
+Route::resource('/profesores', ProfesoresController::class);
 Route::get('/profesores', [ProfesoresController::class, 'index'])->name('profesores.index');
-Route::get('/estudiantes/{estudiante}', [EstudianteController::class, 'show'])->name('estudiantes.show');
+Route::get('/profesores/{profesor}', [ProfesoresController::class, 'show'])->name('profesores.show');
 
-Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
-Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
+Route::get('/profesores/create', [ProfesoresController::class, 'create'])->name('profesores.create');
+Route::post('/profesores', [ProfesoresController::class, 'store'])->name('profesores.store');
 
-Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit'])->name('estudiantes.edit');
-Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
+Route::get('/profesores/{profesor}/edit', [ProfesoresController::class, 'edit'])->name('profesores.edit');
+Route::put('/profesores/{profesor}', [ProfesoresController::class, 'update'])->name('profesores.update');
 
-Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
+Route::delete('/profesores/{profesor}', [ProfesoresController::class, 'destroy'])->name('profesores.destroy');
 
 
 

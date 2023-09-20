@@ -1,10 +1,11 @@
 @extends('layouts.crud')
 
 @section('content')
+
 <div class="container">
-    <h2>Listado de estudiantes</h2>
+    <h2>Listado de profesores</h2>
     <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
-    <a href="{{ route('profesores.create') }}" class="btn btn-primary mb-3">Crear estudiante</a>
+    <a href="{{ route('profesores.create') }}" class="btn btn-primary mb-3">Crear profesor</a>
     <table class="table">
         <thead>
             <tr>
@@ -27,10 +28,8 @@
                     <td>{{$profesor->telefono}}</td>
                     <td>{{$profesor->direccion}}</td>
                     <td>
-                        <a href="{{ route('profesores.show', $profesor->id) }}" class="btn btn-info">Ver</a>
-                        <br/>
-                        <a href="{{ route('profesores.edit', $profesor->id) }}" class="btn btn-primary">Editar</a>
-                        <br/>
+                        
+                        <a href="{{ route('profesores.edit', $profesor->id) }}" class="btn btn-primary mb-3">Editar</a>
                         <form action="{{ route('profesores.destroy', $profesor->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

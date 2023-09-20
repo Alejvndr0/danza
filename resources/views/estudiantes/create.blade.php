@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Crear Estudiante</h2>
+    <a href="{{route('estudiantes.index')}}" class="btn btn-primary mb-3">Volver</a>
     <form action="{{ route('estudiantes.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -19,12 +20,13 @@
         </div>
         <div class="form-group">
             <label for="correo">correo:</label>
-            <input type="text" class="form-control" name="correo" required>
+            <input type="email" class="form-control" name="correo" required>
         </div>
         <div class="form-group">
-            <label for="direccion">direccio:</label>
+            <label for="direccion">direccion:</label>
             <input type="text" class="form-control" name="direccion" required>
         </div>
+        <br>
         <button type="submit" class="btn btn-success">Guardar</button>
     </form>
 </div>
