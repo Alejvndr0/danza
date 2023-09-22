@@ -6,7 +6,7 @@
     <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
     <a href="{{ route('estudiantes.create') }}" class="btn btn-primary mb-3">Crear estudiante</a>
     <table class="table">
-        <thead>
+        <thead >
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -27,15 +27,24 @@
                     <td>{{$estudiante->correo}}</td>
                     <td>{{$estudiante->direccion}}</td>
                     <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-primary mb-3">Editar</a>
+                                </div>
+                                <div class="col">
+                                    <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
                         
-                        <br/>
-                        <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-primary mb-3">Editar</a>
-                        <br/>
-                        <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
+                        
+                        
                     </td>
                 </tr>
             @endforeach

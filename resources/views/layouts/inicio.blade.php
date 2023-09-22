@@ -30,13 +30,16 @@
             margin-left: 250px;
             padding: 15px;
         }
+        h3 {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
     <!-- Barra lateral -->
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>DANZANDO</h3>
+        <div class="sidebar-header" >
+            <h3 >DANZANDO</h3>
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
@@ -50,18 +53,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    CURSOS
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    MENU 4
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    MENU 5
+                <a class="nav-link" href="{{route('estilos.index')}}">
+                    ESTILOS
                 </a>
             </li>
         </ul>

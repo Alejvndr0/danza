@@ -28,13 +28,23 @@
                     <td>{{$profesor->telefono}}</td>
                     <td>{{$profesor->direccion}}</td>
                     <td>
+                        <div class="container mt-4">
+                            <div class="row">
+                                <div class="col px-1">
+                                    <a href="{{ route('profesores.edit', $profesor->id) }}" class="btn btn-primary mb-3">Editar</a>
+                                </div>
+                                <div class="col px-1">
+                                    <form action="{{ route('profesores.destroy', $profesor->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
                         
-                        <a href="{{ route('profesores.edit', $profesor->id) }}" class="btn btn-primary mb-3">Editar</a>
-                        <form action="{{ route('profesores.destroy', $profesor->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
+                        
                     </td>
                 </tr>
             @endforeach
