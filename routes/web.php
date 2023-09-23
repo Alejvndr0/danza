@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\ProfesoresController;
+use App\Http\Controllers\ClasesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::put('/profesores/{profesor}', [ProfesoresController::class, 'update'])->n
 Route::delete('/profesores/{profesor}', [ProfesoresController::class, 'destroy'])->name('profesores.destroy');
 
 Route::resource('estilos', EstilosController::class);
+
+Route::resource('clases', ClasesController::class);
 
 
 

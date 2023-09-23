@@ -57,6 +57,11 @@
                     ESTILOS
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('clases.index')}}">
+                    CLASES
+                </a>
+            </li>
         </ul>
     </nav>
     
