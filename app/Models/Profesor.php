@@ -17,4 +17,8 @@ class Profesor extends Model
         'direccion',
 
     ];
+    public function clases()
+    {
+        return $this ->hasmany(Clase::class);
+    }
 }

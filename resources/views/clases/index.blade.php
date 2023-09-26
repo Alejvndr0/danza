@@ -13,6 +13,9 @@
                 <th>descripcion</th>
                 <th>hora de inicio</th>
                 <th>hora fin</th>
+                <th>estilo</th>
+                <th>dificultad</th>
+                <th>profesor</th>
                 <th>acciones</th>
             </tr>
         </thead>
@@ -24,6 +27,10 @@
                     <td>{{$clase->descripcion }}</td>
                     <td>{{$clase->hora_inicio }}</td>
                     <td>{{$clase->hora_fin}}</td>
+                    <td>{{$clase->estilo->nombre}}</td>
+                    <th>{{$clase->estilo->dificultad}}</th>
+                    <td>{{$clase->profesor->nombre}}</td>
+                    
                     <td>
                         <div class="container">
                             <div class="row">

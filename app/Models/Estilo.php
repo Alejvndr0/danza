@@ -9,4 +9,8 @@ class Estilo extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function clases(){
+        return $this-> hasMany(Clase::class);
+    }
 }
