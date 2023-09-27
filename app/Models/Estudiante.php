@@ -16,5 +16,8 @@ class Estudiante extends Model
         'direccion',
 
     ];
+    public function asistensias(){
+        return $this->hasMany(Asistencia::class);
+    }
 
 }

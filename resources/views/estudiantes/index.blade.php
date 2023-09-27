@@ -4,7 +4,9 @@
 <div class="container">
     <h2>Listado de estudiantes</h2>
     <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
-    <a href="{{ route('estudiantes.create') }}" class="btn btn-primary mb-3">Crear estudiante</a>
+    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#create">
+        agregar estudiante
+    </button>
     <table class="table">
         <thead >
             <tr>
@@ -30,7 +32,9 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-primary mb-3">Editar</a>
+                                    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#edit">
+                                        editar
+                                    </button>
                                 </div>
                                 <div class="col">
                                     <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST">
@@ -51,4 +55,6 @@
         </tbody>
     </table>
 </div>
+@include('estudiantes.create')
+@include('estudiantes.edit')
 @endsection

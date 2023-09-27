@@ -62,6 +62,21 @@
                     CLASES
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('asistencias.index')}}">
+                    ASISTENCIAS
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('inscripciones.index')}}">
+                    INSCRIPCIONES
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('pagos.index')}}">
+                    PAGOS
+                </a>
+            </li>
         </ul>
     </nav>
     

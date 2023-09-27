@@ -17,4 +17,11 @@ class Clase extends Model
     public function estilo(){
         return $this -> belongsTo(Estilo::class,'id_estilo');
     }
+    public function asistencias(){
+        return $this -> hasMany(Asistencia::class);
+    }
+    public function inscripciones(){
+        return $this -> hasMany(Inscripcion::class);
+    }
+    
 }

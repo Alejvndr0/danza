@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\ClasesController;
+use App\Http\Controllers\AsistenciasController;
+use App\Http\Controllers\InscripcionesController;
+use App\Http\Controllers\PagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/users', UserController::class);
+Route::resource('users', UserController::class);
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
@@ -35,7 +38,7 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-Route::resource('/estudiantes', EstudianteController::class);
+Route::resource('estudiantes', EstudianteController::class);
 Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
 Route::get('/estudiantes/{estudiante}', [EstudianteController::class, 'show'])->name('estudiantes.show');
 Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
@@ -44,7 +47,7 @@ Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit
 Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
 Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
 
-Route::resource('/profesores', ProfesoresController::class);
+Route::resource('profesores', ProfesoresController::class);
 Route::get('/profesores', [ProfesoresController::class, 'index'])->name('profesores.index');
 Route::get('/profesores/{profesor}', [ProfesoresController::class, 'show'])->name('profesores.show');
 Route::get('/profesores/create', [ProfesoresController::class, 'create'])->name('profesores.create');
@@ -54,8 +57,10 @@ Route::put('/profesores/{profesor}', [ProfesoresController::class, 'update'])->n
 Route::delete('/profesores/{profesor}', [ProfesoresController::class, 'destroy'])->name('profesores.destroy');
 
 Route::resource('estilos', EstilosController::class);
-
 Route::resource('clases', ClasesController::class);
+Route::resource('asistencias', AsistenciasController::class);
+Route::resource('inscripciones', InscripcionesController::class);
+Route::resource('pagos', PagosController::class);
 
 
 
