@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label for="id_profesor">Profesor:</label>
-            <select name="id_profesor" id="id_profesor" class="form-control" required>
+            <select name="id_profesor" id="id_profesor" class="form-control" nullable>
                 @foreach($profesores as $profesor)
                     <option value="{{ $profesor->id }}">{{ $profesor->nombre }}</option>
                 @endforeach

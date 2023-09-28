@@ -20,7 +20,7 @@
             <label for="id_inscripcion">Inscripción:</label>
             <select name="id_inscripcion" id="id_inscripcion" class="form-control" required>
                 @foreach($inscripciones as $inscripcion)
-                    <option value="{{ $inscripcion->id }}">{{ $inscripcion->id }} - {{ $inscripcion->estudiante->nombre }} {{ $inscripcion->estudiante->apellido }} - {{ $inscripcion->clase->nombre }}</option>
+                    <option value="{{ $inscripcion->id }}">{{ $inscripcion->id }} - {{ $inscripcion->estudiante->nombre }} {{ $inscripcion->estudiante->apellido }} - {{ $inscripcion->clase->nombre ??'no asignado' }}</option>
                 @endforeach
             </select>
         </div>

@@ -27,9 +27,9 @@
                     <td>{{$clase->descripcion }}</td>
                     <td>{{$clase->hora_inicio }}</td>
                     <td>{{$clase->hora_fin}}</td>
-                    <td>{{$clase->estilo->nombre}}</td>
-                    <th>{{$clase->estilo->dificultad}}</th>
-                    <td>{{$clase->profesor->nombre}}</td>
+                    <td>{{$clase->estilo->nombre ?? 'no asignado'}}</td>
+                    <th>{{$clase->estilo->dificultad ?? 'no asignado'}}</th>
+                    <td>{{$clase->profesor->nombre ??'nulo'}}</td>
                     
                     <td>
                         <div class="container">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pago;
 use App\Models\Inscripcion;
+use App\Http\Requests\PagosRequest;
 
 class PagosController extends Controller
 {
@@ -24,14 +25,8 @@ class PagosController extends Controller
     }
 
   
-    public function store(Request $request)
+    public function store(PagosRequest $request)
     {
-        $request->validate([
-            'fecha_pago' => 'required|date',
-            'monto' => 'required|numeric',
-            'id_inscripcion' => 'required',
-        ]);
-
         Pago::create($request->all());
         return redirect()->route('pagos.index')->with('success', 'Pago registrado exitosamente.');
     }
@@ -48,13 +43,8 @@ class PagosController extends Controller
         return view('pagos.edit' , compact('pago','inscripciones'));
     }
 
-    public function update(Request $request, Pago $pago)
+    public function update(PagosRequest $request, Pago $pago)
     {
-        $request->validate([
-            'fecha_pago' => 'required|date',
-            'monto' => 'required|numeric',
-            'id_inscripcion' => 'required',
-        ]);
         $pago->update($request->all());
         return redirect()->route('pagos.index')
             ->with('success', 'registro actualizado exitosamente.');

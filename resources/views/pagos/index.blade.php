@@ -21,7 +21,7 @@
                     <td>{{ $pago->id }}</td>
                     <td>{{ $pago->fecha_pago }}</td>
                     <td>{{ $pago->monto }}</td>
-                    <td>{{ $pago->inscripcion->id }} - {{ $pago->inscripcion->estudiante->nombre }} {{ $pago->inscripcion->estudiante->apellido }} - {{ $pago->inscripcion->clase->nombre }}</td>
+                    <td>{{ $pago->inscripcion->id }} - {{ $pago->inscripcion->estudiante->nombre }} {{ $pago->inscripcion->estudiante->apellido }} - {{ $pago->inscripcion->clase->nombre ??'no asignado' }}</td>
                     <td>
                         <a href="{{ route('pagos.edit', $pago->id) }}" class="btn btn-primary">Editar</a>
                         <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST" style="display: inline">

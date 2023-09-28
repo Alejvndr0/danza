@@ -9,14 +9,7 @@ class Profesor extends Model
 {
     use HasFactory;
     protected $table = 'profesores';
-    protected $fillable = [
-        'nombre',
-        'apellido',
-        'correo',
-        'telefono',
-        'direccion',
-
-    ];
+    protected $guarded = [];
     public function clases()
     {
         return $this ->hasmany(Clase::class);

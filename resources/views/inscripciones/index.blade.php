@@ -25,7 +25,7 @@
                     <td>{{ $inscripcion->estado_pago }}</td>
                     <td>{{ $inscripcion->num_pago }}</td>
                     <td>{{ $inscripcion->estudiante->nombre }} {{ $inscripcion->estudiante->apellido }}</td>
-                    <td>{{ $inscripcion->clase->nombre }}</td>
+                    <td>{{ $inscripcion->clase->nombre ??'no asignado' }}</td>
                     <td>
                         <a href="{{ route('inscripciones.edit', $inscripcion->id) }}" class="btn btn-primary">Editar</a>
                         <form action="{{ route('inscripciones.destroy', $inscripcion->id) }}" method="POST" style="display: inline">

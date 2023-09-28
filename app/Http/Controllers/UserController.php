@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -20,13 +21,8 @@ class UserController extends Controller
     {
         return view('users.create');
     }
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name' =>'required',
-            'email'=>'required',
-            'password' =>'required',
-        ]);
         User::create($request->all());
         return redirect()->route('users.index')->with('estudiante creado exitosamente');
     }
@@ -38,14 +34,8 @@ class UserController extends Controller
     {
         return view('users.edit', compact('user'));
     }
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' =>'required',
-        
-        ]);
         $user->update($request->all());
         return redirect()->route('users.index')
             ->with('success', 'Estudiante actualizado exitosamente.');

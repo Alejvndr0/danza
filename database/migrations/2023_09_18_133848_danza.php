@@ -13,67 +13,67 @@ return new class extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->date('fecha_nac');
-            $table->string('correo');
-            $table->string('direccion');
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
+            $table->date('fecha_nac')->nullable();
+            $table->string('correo')->nullable();
+            $table->string('direccion')->nullable();
             $table->timestamps();
         });
         Schema::create('profesores', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('correo');
-            $table->string('telefono');
-            $table->string('direccion');
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
+            $table->string('correo')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('direccion')->nullable();
             $table->timestamps();
         });
         Schema::create('estilos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('dificultad');
+            $table->string('nombre')->nullable();
+            $table->string('dificultad')->nullable();
             $table->timestamps();
         });
         Schema::create('clases', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->text('descripcion');
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
+            $table->string('nombre')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->time('hora_inicio')->nullable();
+            $table->time('hora_fin')->nullable();
             $table->unsignedBigInteger('id_estilo')->nullable();
             $table->unsignedBigInteger('id_profesor')->nullable();
-            $table->foreign('id_estilo')->references('id')->on('estilos');
-            $table->foreign('id_profesor')->references('id')->on('profesores');
+            $table->foreign('id_estilo')->references('id')->on('estilos')->onDelete('set null');
+            $table->foreign('id_profesor')->references('id')->on('profesores')->onDelete('set null');
             $table->timestamps();
         });
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_asistencia');
-            $table->string('estado_asistencia');
+            $table->date('fecha_asistencia')->nullable();
+            $table->string('estado_asistencia')->nullable();
             $table->unsignedBigInteger('id_estudiante')->nullable();
             $table->unsignedBigInteger('id_clase')->nullable();
             $table->foreign('id_estudiante')->references('id')->on('estudiantes');
-            $table->foreign('id_clase')->references('id')->on('clases');
+            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inscripcion');
-            $table->string('estado_pago');
-            $table->string('num_pago');
+            $table->date('fecha_inscripcion')->nullable();
+            $table->string('estado_pago')->nullable();
+            $table->string('num_pago')->nullable();
             $table->unsignedBigInteger('id_estudiante')->nullable();
             $table->unsignedBigInteger('id_clase')->nullable();
             $table->foreign('id_estudiante')->references('id')->on('estudiantes');
-            $table->foreign('id_clase')->references('id')->on('clases');
+            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('set null');
             $table->timestamps();
         });
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_pago');
-            $table->decimal('monto', 10, 2);
+            $table->date('fecha_pago')->nullable();
+            $table->decimal('monto', 10, 2)->nullable();
             $table->unsignedBigInteger('id_inscripcion')->nullable();
-            $table->foreign('id_inscripcion')->references('id')->on('inscripciones');
+            $table->foreign('id_inscripcion')->references('id')->on('inscripciones')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::create('users', function (Blueprint $table) {

@@ -3,37 +3,37 @@
 @section('content')
 <div class="container">
     <h2>Listado de estudiantes</h2>
-    <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
-    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#create">
-        agregar estudiante
+    <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">
+        Agregar estudiante
     </button>
     <table class="table">
-        <thead >
+        <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>apellido</th>
-                <th>fecha de nacimiento</th>
-                <th>correo</th>
-                <th>direccion</th>
+                <th>Apellido</th>
+                <th>Fecha de nacimiento</th>
+                <th>Correo</th>
+                <th>Dirección</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($estudiantes as $estudiante)
                 <tr>
-                    <td>{{$estudiante->id }}</td>
-                    <td>{{$estudiante->nombre }}</td>
-                    <td>{{$estudiante->apellido }}</td>
-                    <td>{{$estudiante->fecha_nac}}</td>
-                    <td>{{$estudiante->correo}}</td>
-                    <td>{{$estudiante->direccion}}</td>
+                    <td>{{ $estudiante->id }}</td>
+                    <td>{{ $estudiante->nombre }}</td>
+                    <td>{{ $estudiante->apellido }}</td>
+                    <td>{{ $estudiante->fecha_nac }}</td>
+                    <td>{{ $estudiante->correo }}</td>
+                    <td>{{ $estudiante->direccion }}</td>
                     <td>
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#edit">
-                                        editar
+                                    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#editModal{{ $estudiante->id }}">
+                                        Editar
                                     </button>
                                 </div>
                                 <div class="col">
@@ -47,14 +47,30 @@
                             </div>
                         </div>
                         
-                        
-                        
+                       
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-@include('estudiantes.create')
-@include('estudiantes.edit')
+
+@foreach ($estudiantes as $estudiante)
+    <!-- Modal de Edición para el Estudiante Actual -->
+    <div class="modal fade" id="editModal{{ $estudiante->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                @include('estudiantes.edit')
+            </div>
+        </div>
+    </div>
+@endforeach
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @include('estudiantes.create')
+        </div>
+    </div>
+</div>
 @endsection
