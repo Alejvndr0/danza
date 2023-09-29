@@ -7,6 +7,7 @@ use App\Models\Inscripcion;
 use App\Models\Clase;
 use App\Models\Estudiante;
 use App\Http\Requests\InscripcionesRequest;
+use App\Events\InscripcionCreada;
 
 class InscripcionesController extends Controller
 {
@@ -25,10 +26,11 @@ class InscripcionesController extends Controller
         return view('inscripciones.create', compact('estudiantes', 'clases'));
     }
     public function store(InscripcionesRequest $request)
-    {
-        Inscripcion::create($request->all());
-        return redirect()->route('inscripciones.index')->with('success', 'Inscripción registrada exitosamente.');
-    }
+{
+    $inscripcion = Inscripcion::create($request->all());
+    event(new InscripcionCreada($inscripcion->id_clase));
+    return redirect()->route('inscripciones.index')->with('success', 'Inscripción registrada exitosamente.');
+}
 
     public function show(string $id)
     {
@@ -50,9 +52,11 @@ class InscripcionesController extends Controller
             ->with('success', 'registro actualizado exitosamente.');
     }
 
-    public function destroy(Inscripcion $inscripcion)
+    public function destroy($id)
     {
+        $inscripcion = inscripcion::find($id);
         $inscripcion->delete();
+        event(new InscripcionCreada($inscripcion->id_clase));
         return redirect()->route('inscripciones.index')
             ->with('success', 'Estilo eliminado exitosamente.');
     }

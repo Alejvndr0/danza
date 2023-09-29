@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="id_estudiante">Estudiante:</label>
             <select name="id_estudiante" id="id_estudiante" class="form-control" required>
-                @foreach($estudiantes as $estudiante)
+                @foreach ($estudiantes as $estudiante)
                     <option value="{{ $estudiante->id }}">{{ $estudiante->nombre }} {{ $estudiante->apellido }}</option>
                 @endforeach
             </select>
@@ -36,7 +36,7 @@
         <div class="form-group">
             <label for="id_clase">Clase:</label>
             <select name="id_clase" id="id_clase" class="form-control" required>
-                @foreach($clases as $clase)
+                @foreach ($clases as $clase)
                     <option value="{{ $clase->id }}">{{ $clase->nombre }}</option>
                 @endforeach
             </select>

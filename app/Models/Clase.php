@@ -21,7 +21,7 @@ class Clase extends Model
         return $this -> hasMany(Asistencia::class);
     }
     public function inscripciones(){
-        return $this -> hasMany(Inscripcion::class);
+        return $this -> hasMany(Inscripcion::class, 'id_clase');
     }
     
 }

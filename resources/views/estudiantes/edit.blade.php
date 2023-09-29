@@ -20,7 +20,8 @@
             </div>
             <div class="form-group">
                 <label for="fecha_nac">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" name="fecha_nac" value="{{ $estudiante->fecha_nac }}" required>
+                <input type="date" class="form-control" name="fecha_nac" value="{{ $estudiante->fecha_nac }}"
+                    required>
             </div>
             <div class="form-group">
                 <label for="correo">Correo:</label>
@@ -28,7 +29,8 @@
             </div>
             <div class="form-group">
                 <label for="direccion">Dirección:</label>
-                <input type="text" class="form-control" name="direccion" value="{{ $estudiante->direccion }}" required>
+                <input type="text" class="form-control" name="direccion" value="{{ $estudiante->direccion }}"
+                    required>
             </div>
             <br>
             <div class="modal-footer">

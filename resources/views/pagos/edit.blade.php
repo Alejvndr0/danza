@@ -9,20 +9,24 @@
 
         <div class="form-group">
             <label for="fecha_pago">Fecha de Pago:</label>
-            <input type="date" name="fecha_pago" id="fecha_pago" class="form-control" value="{{ $pago->fecha_pago }}" required>
+            <input type="date" name="fecha_pago" id="fecha_pago" class="form-control" value="{{ $pago->fecha_pago }}"
+                required>
         </div>
 
         <div class="form-group">
             <label for="monto">Monto:</label>
-            <input type="number" name="monto" id="monto" class="form-control" step="0.01" value="{{ $pago->monto }}" required>
+            <input type="number" name="monto" id="monto" class="form-control" step="0.01"
+                value="{{ $pago->monto }}" required>
         </div>
 
         <div class="form-group">
             <label for="id_inscripcion">Inscripción:</label>
             <select name="id_inscripcion" id="id_inscripcion" class="form-control" required>
-                @foreach($inscripciones as $inscripcion)
-                    <option value="{{ $inscripcion->id }}" {{ $pago->id_inscripcion === $inscripcion->id ? 'selected' : '' }}>
-                        {{ $inscripcion->id }} - {{ $inscripcion->estudiante->nombre }} {{ $inscripcion->estudiante->apellido }} - {{ $inscripcion->clase->nombre }}
+                @foreach ($inscripciones as $inscripcion)
+                    <option value="{{ $inscripcion->id }}"
+                        {{ $pago->id_inscripcion === $inscripcion->id ? 'selected' : '' }}>
+                        {{ $inscripcion->id }} - {{ $inscripcion->estudiante->nombre }}
+                        {{ $inscripcion->estudiante->apellido }} - {{ $inscripcion->clase->nombre }}
                     </option>
                 @endforeach
             </select>

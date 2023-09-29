@@ -6,7 +6,7 @@
 </div>
 <div class="modal-body">
     <div class="container">
-        <a href="{{route('estilos.index')}}" class="btn btn-primary mb-3">Volver</a>
+        <a href="{{ route('estilos.index') }}" class="btn btn-primary mb-3">Volver</a>
         <form action="{{ route('estilos.update', $estilo->id) }}" method="POST">
             @csrf
             @method('PUT')

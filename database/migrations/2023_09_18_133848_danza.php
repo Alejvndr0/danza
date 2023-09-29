@@ -53,8 +53,8 @@ return new class extends Migration
             $table->string('estado_asistencia')->nullable();
             $table->unsignedBigInteger('id_estudiante')->nullable();
             $table->unsignedBigInteger('id_clase')->nullable();
-            $table->foreign('id_estudiante')->references('id')->on('estudiantes');
-            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('cascade');
+            $table->foreign('id_estudiante')->references('id')->on('estudiantes')->onDelete('cascade');
+            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('restrict');
             $table->timestamps();
         });
         Schema::create('inscripciones', function (Blueprint $table) {
@@ -64,8 +64,8 @@ return new class extends Migration
             $table->string('num_pago')->nullable();
             $table->unsignedBigInteger('id_estudiante')->nullable();
             $table->unsignedBigInteger('id_clase')->nullable();
-            $table->foreign('id_estudiante')->references('id')->on('estudiantes');
-            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('set null');
+            $table->foreign('id_estudiante')->references('id')->on('estudiantes')->onDelete('cascade');
+            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('restrict');
             $table->timestamps();
         });
         Schema::create('pagos', function (Blueprint $table) {
