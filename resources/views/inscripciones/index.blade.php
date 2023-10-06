@@ -5,7 +5,7 @@
         <h1>Lista de Inscripciones</h1>
         <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
         <a href="{{ route('inscripciones.create') }}" class="btn btn-primary mb-3">registrar inscripcion</a>
-        <table class="table">
+        <table class="table table-dark">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 @foreach ($inscripciones as $inscripcion)
-                    <tr>
+                    <tr class="table-active">
                         <td>{{ $inscripcion->id }}</td>
                         <td>{{ $inscripcion->fecha_inscripcion }}</td>
                         <td>{{ $inscripcion->estado_pago }}</td>
@@ -28,11 +28,11 @@
                         <td>{{ $inscripcion->clase->nombre ?? 'no asignado' }}</td>
                         <td>
                             <a href="{{ route('inscripciones.edit', $inscripcion->id) }}" class="btn btn-primary">Editar</a>
-                            <form action="{{ route('inscripciones.destroy', $inscripcion->id) }}" method="POST"
+                            <form id="form-eliminar5"  action="{{ route('inscripciones.destroy', $inscripcion->id) }}" method="POST"
                                 style="display: inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <button type="button" class="btn btn-danger" onclick="confirmarEliminacion('form-eliminar5')">Eliminar</button>
                             </form>
                         </td>
                     </tr>

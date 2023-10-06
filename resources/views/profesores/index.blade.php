@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h2>Listado de profesores</h2>
+        <h1>Listado de profesores</h1>
         <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">
             Agregar profesor
         </button>
-        <table class="table">
+        <table class="table table-dark">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 @foreach ($profesores as $profesor)
-                    <tr>
+                    <tr class="table-active">
                         <td>{{ $profesor->id }}</td>
                         <td>{{ $profesor->nombre }}</td>
                         <td>{{ $profesor->apellido }}</td>
@@ -29,7 +29,7 @@
                         <td>{{ $profesor->telefono }}</td>
                         <td>{{ $profesor->direccion }}</td>
                         <td>
-                            <div class="container mt-4">
+                            <div class="container">
                                 <div class="row">
                                     <div class="col px-1">
                                         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
@@ -38,10 +38,10 @@
                                         </button>
                                     </div>
                                     <div class="col px-1">
-                                        <form action="{{ route('profesores.destroy', $profesor->id) }}" method="POST">
+                                        <form id="form-eliminar2"action="{{ route('profesores.destroy', $profesor->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            <button type="button" class="btn btn-danger" onclick="confirmarEliminacion('form-eliminar2')">Eliminar</button>
                                         </form>
                                     </div>
                                     <div class="col"></div>
@@ -56,7 +56,6 @@
         </table>
     </div>
     @foreach ($profesores as $profesor)
-        <!-- Modal de Edición para el Estudiante Actual -->
         <div class="modal fade" id="editModal{{ $profesor->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

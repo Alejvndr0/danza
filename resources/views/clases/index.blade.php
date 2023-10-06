@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Listado de clases</h2>
+        <h1>Listado de clases</h1>
         <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
         <a href="{{ route('clases.create') }}" class="btn btn-primary mb-3">agregar una nueva clase</a>
         @if (session('error'))
@@ -16,7 +16,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <table class="table">
+        <table class="table table-dark">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -33,7 +33,7 @@
             </thead>
             <tbody>
                 @foreach ($clases as $clase)
-                    <tr>
+                    <tr class="table-active">
                         <td>{{ $clase->id }}</td>
                         <td>{{ $clase->nombre }}</td>
                         <td>{{ $clase->descripcion }}</td>

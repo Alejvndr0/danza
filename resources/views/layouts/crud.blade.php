@@ -8,9 +8,11 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
-        h2 {
-            color: #f5f7f8b6;
+        h1, h2, h3, h4{
+            color: #fefeffb6;
+            font-family: cursive;
         }
+       
     </style>
 </head>
 
@@ -31,6 +33,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <script>
+        function confirmarEliminacion(formId, mensaje) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: mensaje || "Esta acción no se puede deshacer.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Si el usuario hace clic en "Sí, eliminar", enviar el formulario
+                    document.getElementById(formId).submit();
+                }
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>

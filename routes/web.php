@@ -27,7 +27,7 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.e
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-Route::resource('/estudiantes', EstudianteController::class);
+Route::resource('estudiantes', EstudianteController::class);
 Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
 Route::get('/estudiantes/{estudiante}', [EstudianteController::class, 'show'])->name('estudiantes.show');
 Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');

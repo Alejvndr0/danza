@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h2>Listado de estilos</h2>
+        <h1>Listado de estilos</h1>
         <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">
             Agregar estilo
         </button>
-        <table class="table">
+        <table class="table table-dark">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -18,12 +18,12 @@
             </thead>
             <tbody>
                 @foreach ($estilos as $estilo)
-                    <tr>
+                    <tr class="table-active">
                         <td>{{ $estilo->id }}</td>
                         <td>{{ $estilo->nombre }}</td>
                         <td>{{ $estilo->dificultad }}</td>
                         <td>
-                            <div class="container mt-4">
+                            <div class="container">
                                 <div class="row ">
                                     <div class="col">
                                         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
@@ -32,10 +32,10 @@
                                         </button>
                                     </div>
                                     <div class="col">
-                                        <form action="{{ route('estilos.destroy', $estilo->id) }}" method="POST">
+                                        <form id="form-eliminar3" action="{{ route('estilos.destroy', $estilo->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            <button type="button" class="btn btn-danger" onclick="confirmarEliminacion('form-eliminar3')">Eliminar</button>
                                         </form>
                                     </div>
                                     <div class="col"></div>

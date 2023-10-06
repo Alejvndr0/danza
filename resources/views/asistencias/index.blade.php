@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2>Listado de asistencias</h2>
+    <h1>Listado de asistencias</h1>
     <a href="{{route('users.index')}}" class="btn btn-primary mb-3">Volver</a>
     <a href="{{ route('asistencias.create') }}" class="btn btn-primary mb-3">agregar una nueva asistencia</a>
-    <table class="table">
+    <table class="table table-dark">
         <thead >
             <tr>
                 <th>ID</th>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             @foreach ($asistencias as $asistencia)
-                <tr>
+                <tr class="table-active">
                     <td>{{$asistencia->id }}</td>
                     <td>{{$asistencia->fecha_asistencia}}</td>
                     <td>{{$asistencia->estado_asistencia}}</td>
@@ -32,10 +32,10 @@
                                     <a href="{{ route('asistencias.edit', $asistencia->id) }}" class="btn btn-primary mb-3">Editar</a>
                                 </div>
                                 <div class="col">
-                                    <form action="{{ route('asistencias.destroy', $asistencia->id) }}" method="POST">
+                                    <form id="form-eliminar4" action="{{ route('asistencias.destroy', $asistencia->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        <button type="button" class="btn btn-danger" onclick="confirmarEliminacion('form-eliminar4')">Eliminar</button>
                                     </form>
                                 </div>
                                 <div class="col"></div>

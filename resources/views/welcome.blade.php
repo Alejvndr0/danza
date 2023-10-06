@@ -19,7 +19,6 @@
         @endif
     </div>
     <header>
-        <div class="overlay"></div>
         <h1>DANZANDO</h1>
     </header>
 

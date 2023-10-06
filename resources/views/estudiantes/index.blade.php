@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h2>Listado de estudiantes</h2>
+        <h1>Listado de estudiantes</h1>
         <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createModal">
             Agregar estudiante
         </button>
-        <table class="table">
+        <table class="table table-dark">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 @foreach ($estudiantes as $estudiante)
-                    <tr>
+                    <tr class="table-active">
                         <td>{{ $estudiante->id }}</td>
                         <td>{{ $estudiante->nombre }}</td>
                         <td>{{ $estudiante->apellido }}</td>
@@ -38,10 +38,10 @@
                                         </button>
                                     </div>
                                     <div class="col">
-                                        <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST">
+                                        <form id="form-eliminar1" action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST" >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            <button type="button" class="btn btn-danger" onclick="confirmarEliminacion('form-eliminar1')">Eliminar</button>
                                         </form>
                                     </div>
                                     <div class="col"></div>
