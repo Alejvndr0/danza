@@ -7,17 +7,16 @@ use App\Models\Inscripcion;
 use App\Models\Clase;
 use App\Models\Estudiante;
 use App\Http\Requests\InscripcionesRequest;
-use App\Events\InscripcionCreada;
+use Carbon\Carbon;
 
 class InscripcionesController extends Controller
 {
     public function index()
     {
         $inscripciones = Inscripcion::all();
-        return view('inscripciones.index',compact('inscripciones'));
 
+        return view('inscripciones.index', compact('inscripciones'));
     }
-
 
     public function create()
     {
@@ -25,39 +24,49 @@ class InscripcionesController extends Controller
         $clases = Clase::all();
         return view('inscripciones.create', compact('estudiantes', 'clases'));
     }
-    public function store(InscripcionesRequest $request)
-{
-    $inscripcion = Inscripcion::create($request->all());
-    event(new InscripcionCreada($inscripcion->id_clase));
-    return redirect()->route('inscripciones.index')->with('success', 'Inscripción registrada exitosamente.');
-}
 
-    public function show(string $id)
+    public function store(InscripcionesRequest $request)
     {
-        //
+        $inscripcion = Inscripcion::create($request->all());
+        $inscripcion->fecha_expiracion = Carbon::now()->addMonth();
+        $inscripcion->save();
+
+        return redirect()
+            ->route('inscripciones.index')
+            ->with('success', 'Inscripción registrada exitosamente.');
     }
 
+    public function show($id)
+    {
+        $inscripcion = Inscripcion::findOrFail($id);
+
+        return view('inscripciones.show', compact('inscripcion'));
+    }
 
     public function edit(Inscripcion $inscripcion)
     {
         $estudiantes = Estudiante::all();
-        $clases= Clase::all();
-        return view('inscripciones.edit' , compact('inscripcion','estudiantes','clases'));
+        $clases = Clase::all();
+        return view('inscripciones.edit', compact('inscripcion','estudiantes', 'clases'));
     }
 
-    public function update(InscripcionesRequest $request, Inscripcion $inscripcion)
+    public function update(Request $request, Inscripcion $inscripcion)
     {
         $inscripcion->update($request->all());
+
         return redirect()->route('inscripciones.index')
-            ->with('success', 'registro actualizado exitosamente.');
+                        ->with('success','Inscripción actualizada');
+
     }
 
     public function destroy($id)
     {
-        $inscripcion = inscripcion::find($id);
+        $inscripcion = Inscripcion::findOrFail($id);
+
         $inscripcion->delete();
-        event(new InscripcionCreada($inscripcion->id_clase));
-        return redirect()->route('inscripciones.index')
-            ->with('success', 'Estilo eliminado exitosamente.');
+
+        return redirect()
+            ->route('inscripciones.index')
+            ->with('success', 'Inscripción eliminada');
     }
 }

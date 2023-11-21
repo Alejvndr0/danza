@@ -60,6 +60,7 @@ return new class extends Migration
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_inscripcion')->nullable();
+            $table->date('fecha_expiracion')->nullable();
             $table->string('estado_pago')->nullable();
             $table->string('num_pago')->nullable();
             $table->unsignedBigInteger('id_estudiante')->nullable();

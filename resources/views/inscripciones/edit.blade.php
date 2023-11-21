@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.crud')
 
 @section('content')
     <h1>Editar Inscripción</h1>
-
     <form method="POST" action="{{ route('inscripciones.update', $inscripcion->id) }}">
         @csrf
         @method('PUT')
@@ -17,8 +16,7 @@
             <label for="estado_pago">Estado de Pago:</label>
             <select name="estado_pago" id="estado_pago" class="form-control" required>
                 <option value="Pagado" {{ $inscripcion->estado_pago === 'Pagado' ? 'selected' : '' }}>Pagado</option>
-                <option value="Pendiente" {{ $inscripcion->estado_pago === 'Pendiente' ? 'selected' : '' }}>Pendiente
-                </option>
+                <option value="Pendiente" {{ $inscripcion->estado_pago === 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
             </select>
         </div>
 
@@ -32,9 +30,9 @@
             <label for="id_estudiante">Estudiante:</label>
             <select name="id_estudiante" id="id_estudiante" class="form-control" required>
                 @foreach ($estudiantes as $estudiante)
-                    <option value="{{ $estudiante->id }}"
-                        {{ $inscripcion->id_estudiante === $estudiante->id ? 'selected' : '' }}>{{ $estudiante->nombre }}
-                        {{ $estudiante->apellido }}</option>
+                    <option value="{{ $estudiante->id }}" {{ $inscripcion->id_estudiante === $estudiante->id ? 'selected' : '' }}>
+                        {{ $estudiante->nombre }} {{ $estudiante->apellido }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -44,7 +42,8 @@
             <select name="id_clase" id="id_clase" class="form-control" required>
                 @foreach ($clases as $clase)
                     <option value="{{ $clase->id }}" {{ $inscripcion->id_clase === $clase->id ? 'selected' : '' }}>
-                        {{ $clase->nombre }}</option>
+                        {{ $clase->nombre }}
+                    </option>
                 @endforeach
             </select>
         </div>

@@ -16,9 +16,10 @@
                 <input type="text" class="form-control" name="email" value="{{ $user->email }}" required>
             </div>
             <div class="form-group">
-                <label for="password">contraseña:</label>
-                <input type="text" class="form-control" name="password" value="{{ $user->password }}" required>
+                <label for="password">nueva contraseña:</label>
+                <input type="text" class="form-control" name="password" >
             </div>
+            <br>
             <button type="submit" class="btn btn-success">Actualizar</button>
         </form>
     </div>

@@ -2,42 +2,68 @@
 
 @section('content')
     <div class="container">
+
         <h1>Lista de Inscripciones</h1>
         <a href="{{ route('users.index') }}" class="btn btn-primary mb-3">Volver</a>
-        <a href="{{ route('inscripciones.create') }}" class="btn btn-primary mb-3">registrar inscripcion</a>
+        <a href="{{ route('inscripciones.create') }}" class="btn btn-primary mb-3">Registrar Inscripción</a>
+
         <table class="table table-dark">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Fecha de Inscripción</th>
-                    <th>Estado de Pago</th>
-                    <th>Número de Pago</th>
+                    <th>Estado</th>
                     <th>Estudiante</th>
                     <th>Clase</th>
+                    <th>Días</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
+
             <tbody>
                 @foreach ($inscripciones as $inscripcion)
                     <tr class="table-active">
+
                         <td>{{ $inscripcion->id }}</td>
+
                         <td>{{ $inscripcion->fecha_inscripcion }}</td>
-                        <td>{{ $inscripcion->estado_pago }}</td>
-                        <td>{{ $inscripcion->num_pago }}</td>
+
+                        @if ($inscripcion->estaInactiva())
+                            <td class="text-danger">Inactiva</td>
+                        @else
+                            <td class="text-success">Activa</td>
+                        @endif
+
                         <td>{{ $inscripcion->estudiante->nombre }} {{ $inscripcion->estudiante->apellido }}</td>
-                        <td>{{ $inscripcion->clase->nombre ?? 'no asignado' }}</td>
+
+                        <td>{{ $inscripcion->clase->nombre ?? 'No asignada' }}</td>
+
+                        <td class="text-{{ $inscripcion->estaInactiva() ? 'danger' : 'success' }}">
+                            {{ $inscripcion->diasRestantes() }} días restantes
+                        </td>
+
                         <td>
+
                             <a href="{{ route('inscripciones.edit', $inscripcion->id) }}" class="btn btn-primary">Editar</a>
-                            <form id="form-eliminar5"  action="{{ route('inscripciones.destroy', $inscripcion->id) }}" method="POST"
-                                style="display: inline">
+
+                            <form id="form-eliminar{{ $inscripcion->id }}"
+                                action="{{ route('inscripciones.destroy', $inscripcion->id) }}" method="POST">
+
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-danger" onclick="confirmarEliminacion('form-eliminar5')">Eliminar</button>
+
+                                <button type="button" class="btn btn-danger"
+                                    onclick="confirmarEliminacion('form-eliminar{{ $inscripcion->id }}')">
+                                    Eliminar
+                                </button>
+
                             </form>
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
     </div>
 @endsection

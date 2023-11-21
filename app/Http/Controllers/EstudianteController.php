@@ -50,4 +50,24 @@ class EstudianteController extends Controller
 
         return redirect()->route('estudiantes.index')->with('success', 'Estudiante eliminado exitosamente.');
     }
+
+    public function obtenerInformacion($id)
+{
+    $estudiante = Estudiante::find($id);
+
+    if (!$estudiante) {
+        return response()->json(['error' => 'Estudiante no encontrado'], 404);
+    }
+
+    return response()->json($estudiante);
+}
+
+
+public function generarReporte()
+{
+    $estudiantes = Estudiante::all();
+
+    return view('estudiantes.reporte-partial')->with('estudiantes', $estudiantes);
+}
+
 }
