@@ -1,5 +1,5 @@
-# Usar una imagen base oficial de PHP con FPM
-FROM php:8.2-fpm
+# Usar una imagen base oficial de PHP con CLI (no FPM)
+FROM php:8.2-cli
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
@@ -35,8 +35,8 @@ RUN composer install --optimize-autoloader --no-dev \
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage
 
-# Exponer el puerto (Render usa 10000 por defecto, pero lo configuramos en el comando de inicio)
+# Exponer el puerto 10000 (el que Render espera)
 EXPOSE 10000
 
-# Comando para iniciar PHP-FPM
-CMD ["php-fpm"]
+# Iniciar el servidor de Laravel
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
