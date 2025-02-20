@@ -1,17 +1,16 @@
 services:
   - type: web
-    name: mi-proyecto-laravel
+    name: danza-laravel
     env: php
     phpVersion: "8.2"
-    plan: free
     buildCommand: "composer install --optimize-autoloader --no-dev && npm install && npm run build"
     startCommand: "php artisan serve --host=0.0.0.0 --port=10000"
     envVars:
       - key: APP_KEY
-        sync: false # Agrega manualmente
+        sync: false # Genera con php artisan key:generate --show y agrégalo manualmente
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
       - key: APP_URL
-        value: "https://danza.onrender.com"
+        value: "https://danza.onrender.com" # Ajusta según la URL de Render
