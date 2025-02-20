@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DANZANDO</title>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         h1, h2, h3, h4{
             color: #fefeffb6;
@@ -19,7 +16,7 @@
     </style>
 </head>
 
-<body style="background-color:  #33393fb6;">
+<body style="background-color:  #000000b6;">
     <div class="container mt-5">
         <div class="row">
             @yield('content')
@@ -57,6 +54,7 @@
             });
         }
     </script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
